@@ -1,0 +1,35 @@
+//添加多个自定义属性，可以使用ext代码块
+ext{
+    username = "zfc"
+
+    //生产/测试环境
+    isRelease = true
+
+    //建立map存储， groovy是糖果语法，非常灵活
+    androidId = [
+            compileSdkVersion:29,
+            buildToolsVersion:"29.0.2",
+            minSdkVersion:24,
+            targetSdkVersion:29,
+            versionCode:1,
+            versionName:"1.0"
+    ]
+
+    appId = [
+            app:"com.canjun.myapplication",
+            personal:"com.canjun.personal",
+            order:"com.canjun.order"
+    ]
+
+    url = [
+            "release":"https://1.1.1.1/release",
+            "debug":"https://1.1.1.1/debug"
+    ]
+
+    supportLirary = "28.0.1"
+
+    dependencies = [
+            appcompat:'androidx.appcompat:appcompat:1.1.0',
+            constraintlayout:'androidx.constraintlayout:constraintlayout:1.1.3'
+    ]
+}

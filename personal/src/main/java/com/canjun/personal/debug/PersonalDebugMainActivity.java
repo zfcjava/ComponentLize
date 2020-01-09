@@ -1,4 +1,4 @@
-package com.canjun.order;
+package com.canjun.personal.debug;
 
 import android.os.Bundle;
 
@@ -8,15 +8,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.canjun.personal.R;
 
 /**
- * OrderMainActivity
+ * PersonalDebugMainActivity
  *
  * @author zfc
  * @date 2020-01-09
  */
-public class OrderMainActivity extends AppCompatActivity {
+public class PersonalDebugMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.order_main_activity);
+        setContentView(R.layout.personal_debug_activity_main);
     }
 }
