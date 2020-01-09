@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.canjun.common.RecorderPathManager;
 import com.canjun.personal.R;
 
 /**
@@ -23,9 +24,18 @@ public class OrderMainActivity extends AppCompatActivity {
     }
 
     public void jumpApp(View v){
+//        try {
+//            Class<?> clzz = Class.forName("com.canjun.myapplication.MainActivity");
+//            Intent intent = new Intent(this,clzz);
+//            startActivity(intent);
+//        }catch (Exception e){
+//
+//        }
+
+
         try {
-            Class<?> clzz = Class.forName("com.canjun.myapplication.MainActivity");
-            Intent intent = new Intent(this,clzz);
+            Class<?> clzz = RecorderPathManager.getTargetClass("app","MainActivity");
+            Intent intent = new Intent(this, clzz);
             startActivity(intent);
         }catch (Exception e){
 
@@ -33,9 +43,18 @@ public class OrderMainActivity extends AppCompatActivity {
     }
 
     public void jumpMy(View v){
+//        try {
+//            Class<?> clzz = Class.forName("com.canjun.personal.PersonalMainActivity");
+//            Intent intent = new Intent(this,clzz);
+//            startActivity(intent);
+//        }catch (Exception e){
+//
+//        }
+
+
         try {
-            Class<?> clzz = Class.forName("com.canjun.personal.PersonalMainActivity");
-            Intent intent = new Intent(this,clzz);
+            Class<?> clzz = RecorderPathManager.getTargetClass("personal","PersonalMainActivity");
+            Intent intent = new Intent(this, clzz);
             startActivity(intent);
         }catch (Exception e){
 

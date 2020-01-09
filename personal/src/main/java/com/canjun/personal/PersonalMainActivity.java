@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.canjun.common.RecorderPathManager;
+
 public class PersonalMainActivity extends AppCompatActivity {
 
     @Override
@@ -15,9 +17,17 @@ public class PersonalMainActivity extends AppCompatActivity {
     }
 
     public void jumpApp(View v){
+//        try {
+//            Class<?> clzz = Class.forName("com.canjun.myapplication.MainActivity");
+//            Intent intent = new Intent(this,clzz);
+//            startActivity(intent);
+//        }catch (Exception e){
+//
+//        }
+
         try {
-            Class<?> clzz = Class.forName("com.canjun.myapplication.MainActivity");
-            Intent intent = new Intent(this,clzz);
+            Class<?> clzz = RecorderPathManager.getTargetClass("app","MainActivity");
+            Intent intent = new Intent(this, clzz);
             startActivity(intent);
         }catch (Exception e){
 
@@ -25,9 +35,17 @@ public class PersonalMainActivity extends AppCompatActivity {
     }
 
     public void jumpOrder(View v){
+//        try {
+//            Class<?> clzz = Class.forName("com.canjun.order.OrderMainActivity");
+//            Intent intent = new Intent(this,clzz);
+//            startActivity(intent);
+//        }catch (Exception e){
+//
+//        }
+
         try {
-            Class<?> clzz = Class.forName("com.canjun.order.OrderMainActivity");
-            Intent intent = new Intent(this,clzz);
+            Class<?> clzz = RecorderPathManager.getTargetClass("order","OrderMainActivity");
+            Intent intent = new Intent(this, clzz);
             startActivity(intent);
         }catch (Exception e){
 
