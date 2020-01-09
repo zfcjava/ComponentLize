@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':order', ':personal', ':common'
 rootProject.name='My Application'
