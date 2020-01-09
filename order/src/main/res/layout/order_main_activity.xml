@@ -8,4 +8,19 @@
         android:text="订单正式环境">
 
     </TextView>
+    <Button
+        android:layout_width="wrap_content"
+        android:text="首页"
+        android:onClick="jumpApp"
+        android:layout_height="wrap_content">
+
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:text="我的"
+        android:onClick="jumpMy"
+        android:layout_height="wrap_content">
+
+    </Button>
 </LinearLayout>
