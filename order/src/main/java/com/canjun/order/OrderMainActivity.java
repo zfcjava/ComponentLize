@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.canjun.arouter_api.ARouterLoadGroup;
 import com.canjun.common.RecorderPathManager;
 import com.canjun.personal.R;
 

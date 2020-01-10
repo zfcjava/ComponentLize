@@ -12,5 +12,5 @@ import java.util.HashMap;
  */
 public interface ARouterLoadPath {
 
-    HashMap<String, RouterBean> findRouter();
+    HashMap<String, RouterBean> loadPath();
 }

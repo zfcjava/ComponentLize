@@ -7,8 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.canjun.arouter_annotation.ARouter;
+import com.canjun.arouter_annotation.RouterBean;
+import com.canjun.arouter_api.ARouterLoadGroup;
+import com.canjun.arouter_api.ARouterLoadPath;
 import com.canjun.common.RecorderPathManager;
+import com.canjun.myapplication.test.ARouter$$Group$$Order;
+import com.canjun.myapplication.test.ARouter$$Group$$Personal;
 import com.canjun.order.OrderMainActivity;
+
+import java.util.HashMap;
 
 
 @ARouter(path = "/app/MainActivity")
@@ -21,40 +28,50 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jumpOrder(View v){
-//        try {
-////            Class<?> clzz = Class.forName("com.canjun.myapplication.MainActivity");
-//            Intent intent = new Intent(this, OrderMainActivity.class);
-//            startActivity(intent);
-//        }catch (Exception e){
-//
-//        }
+
+        ARouterLoadGroup group = new ARouter$$Group$$Order();
+        HashMap<String, Class<? extends ARouterLoadPath>> groupMap = group.loadGroup();
+
+        Class<? extends ARouterLoadPath> orderClazz = groupMap.get("order");
 
         try {
-            Class<?> clzz = RecorderPathManager.getTargetClass("order","OrderMainActivity");
-            Intent intent = new Intent(this, clzz);
-            startActivity(intent);
-        }catch (Exception e){
+            ARouterLoadPath loadPath = orderClazz.newInstance();
+            HashMap<String, RouterBean> pathMap = loadPath.loadPath();
+            RouterBean routerBean = pathMap.get("/order/OrderMainActivity");
 
+            if (routerBean != null) {
+                startActivity(new Intent(this, routerBean.getClazz()));
+            }
+        } catch (IllegalAccessException e) {
+
+
+        } catch (InstantiationException e) {
+            e.printStackTrace();
         }
     }
 
     public void jumpMy(View v){
-//        try {
-//            Class<?> clzz = Class.forName("com.canjun.personal.PersonalMainActivity");
-//            Intent intent = new Intent(this,clzz);
-//            startActivity(intent);
-//        }catch (Exception e){
-//
-//        }
 
+        ARouterLoadGroup group = new ARouter$$Group$$Personal();
+        HashMap<String, Class<? extends ARouterLoadPath>> groupMap = group.loadGroup();
+
+        Class<? extends ARouterLoadPath> orderClazz = groupMap.get("personal");
 
         try {
-            Class<?> clzz = RecorderPathManager.getTargetClass("personal","PersonalMainActivity");
-            Intent intent = new Intent(this, clzz);
-            startActivity(intent);
-        }catch (Exception e){
+            ARouterLoadPath loadPath = orderClazz.newInstance();
+            HashMap<String, RouterBean> pathMap = loadPath.loadPath();
+            RouterBean routerBean = pathMap.get("/personal/PersonalMainActivity");
 
+            if (routerBean != null) {
+                startActivity(new Intent(this, routerBean.getClazz()));
+            }
+        } catch (IllegalAccessException e) {
+
+
+        } catch (InstantiationException e) {
+            e.printStackTrace();
         }
+
     }
 
 

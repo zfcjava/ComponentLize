@@ -26,10 +26,14 @@ public class RouterBean {
 
     private RouterBean(){}
 
-    public RouterBean(Class clazz, String path, String group) {
+    private RouterBean(Class clazz, String path, String group) {
         this.clazz = clazz;
         this.path = path;
         this.group = group;
+    }
+
+    public static RouterBean create(Class clazz, String path, String group) {
+        return new RouterBean(clazz, path, group);
     }
 
     public Type getType() {

@@ -10,5 +10,5 @@ import java.util.HashMap;
  */
 public interface ARouterLoadGroup {
 
-    HashMap<String,Class<? extends ARouterLoadPath>> findGroup();
+    HashMap<String,Class<? extends ARouterLoadPath>> loadGroup();
 }
