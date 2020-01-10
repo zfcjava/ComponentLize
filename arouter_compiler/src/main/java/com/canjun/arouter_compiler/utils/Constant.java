@@ -1,4 +1,4 @@
-package com.canjun.arouter_compiler;
+package com.canjun.arouter_compiler.utils;
 
 /**
  * Constant
@@ -8,4 +8,8 @@ package com.canjun.arouter_compiler;
  */
 public class Constant {
     public final static String AnnotationTypes = "com.canjun.arouter_annotation.ARouter";
+
+    public final static String moduleName = "moduleName";
+
+    public final static String packageNameForAPT = "packageNameForAPT";
 }

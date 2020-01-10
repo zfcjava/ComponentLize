@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.canjun.arouter_annotation.ARouter;
 import com.canjun.common.RecorderPathManager;
 
+@ARouter(path = "/personal/PersonalMainActivity")
 public class PersonalMainActivity extends AppCompatActivity {
 
     @Override

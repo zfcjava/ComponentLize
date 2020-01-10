@@ -6,16 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.canjun.apt.ARouter$$Group$$order;
+import com.canjun.apt.ARouter$$Group$$personal;
 import com.canjun.arouter_annotation.ARouter;
-import com.canjun.arouter_annotation.RouterBean;
-import com.canjun.arouter_api.ARouterLoadGroup;
-import com.canjun.arouter_api.ARouterLoadPath;
-import com.canjun.common.RecorderPathManager;
-import com.canjun.myapplication.test.ARouter$$Group$$Order;
-import com.canjun.myapplication.test.ARouter$$Group$$Personal;
-import com.canjun.order.OrderMainActivity;
+import com.canjun.arouter_annotation.model.RouterBean;
+import com.canjun.arouter_api.core.ARouterLoadGroup;
+import com.canjun.arouter_api.core.ARouterLoadPath;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 @ARouter(path = "/app/MainActivity")
@@ -29,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void jumpOrder(View v){
 
-        ARouterLoadGroup group = new ARouter$$Group$$Order();
-        HashMap<String, Class<? extends ARouterLoadPath>> groupMap = group.loadGroup();
+        ARouterLoadGroup group = new ARouter$$Group$$order();
+        Map<String, Class<? extends ARouterLoadPath>> groupMap = group.loadGroup();
 
         Class<? extends ARouterLoadPath> orderClazz = groupMap.get("order");
 
         try {
             ARouterLoadPath loadPath = orderClazz.newInstance();
-            HashMap<String, RouterBean> pathMap = loadPath.loadPath();
+            Map<String, RouterBean> pathMap = loadPath.loadPath();
             RouterBean routerBean = pathMap.get("/order/OrderMainActivity");
 
             if (routerBean != null) {
@@ -52,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void jumpMy(View v){
 
-        ARouterLoadGroup group = new ARouter$$Group$$Personal();
-        HashMap<String, Class<? extends ARouterLoadPath>> groupMap = group.loadGroup();
+        ARouterLoadGroup group = new ARouter$$Group$$personal();
+        Map<String, Class<? extends ARouterLoadPath>> groupMap = group.loadGroup();
 
         Class<? extends ARouterLoadPath> orderClazz = groupMap.get("personal");
 
         try {
             ARouterLoadPath loadPath = orderClazz.newInstance();
-            HashMap<String, RouterBean> pathMap = loadPath.loadPath();
+            Map<String, RouterBean> pathMap = loadPath.loadPath();
             RouterBean routerBean = pathMap.get("/personal/PersonalMainActivity");
 
             if (routerBean != null) {

@@ -5,6 +5,8 @@ ext{
     //生产/测试环境
     isRelease = true
 
+    packageNameForAPT = "com.canjun.apt"
+
     //建立map存储， groovy是糖果语法，非常灵活
     androidId = [
             compileSdkVersion:29,

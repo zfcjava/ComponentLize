@@ -7,7 +7,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.canjun.arouter_api.ARouterLoadGroup;
+import com.canjun.apt.ARouter$$Group$$order;
+import com.canjun.arouter_annotation.ARouter;
 import com.canjun.common.RecorderPathManager;
 import com.canjun.personal.R;
 
@@ -17,6 +18,7 @@ import com.canjun.personal.R;
  * @author zfc
  * @date 2020-01-09
  */
+@ARouter(path = "/order/OrderMainActivity")
 public class OrderMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
