@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.canjun.arouter_annotation.ARouter;
 import com.canjun.common.RecorderPathManager;
 import com.canjun.order.OrderMainActivity;
 
+
+@ARouter(path = "/app/MainActivity")
 public class MainActivity extends AppCompatActivity {
 
     @Override

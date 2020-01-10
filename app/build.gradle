@@ -18,6 +18,14 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("boolean","isRelease",String.valueOf(isRelease))
 //        multiDexEnable true
+
+        // 在gradle文件中配置选项参数值（用于APT传参接收）
+        // 切记：必须写在defaultConfig节点下
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [content : 'hello apt']
+            }
+        }
     }
     buildTypes {
         debug{
@@ -49,6 +57,10 @@ dependencies {
         implementation project(":personal")
     }
 
+
+    implementation project(":arouter_annotation")
+
+    annotationProcessor project(":arouter_compiler")
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
