@@ -9,6 +9,7 @@ import android.view.View;
 import com.canjun.apt.ARouter$$Group$$order;
 import com.canjun.apt.ARouter$$Group$$personal;
 import com.canjun.arouter_annotation.ARouter;
+import com.canjun.arouter_annotation.Parameter;
 import com.canjun.arouter_annotation.model.RouterBean;
 import com.canjun.arouter_api.core.ARouterLoadGroup;
 import com.canjun.arouter_api.core.ARouterLoadPath;
@@ -19,6 +20,13 @@ import java.util.Map;
 
 @ARouter(path = "/app/MainActivity")
 public class MainActivity extends AppCompatActivity {
+
+
+    @Parameter
+    String name;
+
+    @Parameter(name = "agex")
+    String agex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
