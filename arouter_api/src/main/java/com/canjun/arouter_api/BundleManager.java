@@ -6,12 +6,18 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.canjun.arouter_api.core.Call;
+
+
 /**
  * Bundle拼接参数管理类
  */
 public final class BundleManager {
 
     private Bundle bundle = new Bundle();
+
+    // 底层业务接口
+    private Call call;
     // 是否回调setResult()
     private boolean isResult;
 
@@ -19,6 +25,13 @@ public final class BundleManager {
         return bundle;
     }
 
+    Call getCall() {
+        return call;
+    }
+
+    void setCall(Call call) {
+        this.call = call;
+    }
 
     boolean isResult() {
         return isResult;

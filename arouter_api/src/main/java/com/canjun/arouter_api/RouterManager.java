@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import com.canjun.arouter_annotation.model.RouterBean;
 import com.canjun.arouter_api.core.ARouterLoadGroup;
 import com.canjun.arouter_api.core.ARouterLoadPath;
+import com.canjun.arouter_api.core.Call;
+
 
 /**
  * 路由加载管理器
@@ -146,6 +148,11 @@ public final class RouterManager {
                             }
                             break;
 
+                        case CALL:
+                            Class<?> clazz = routerBean.getClazz();
+                            Call call = (Call) clazz.newInstance();
+                            bundleManager.setCall(call);
+                            return bundleManager.getCall();
                     }
                 }
             }

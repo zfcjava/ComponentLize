@@ -39,6 +39,7 @@ import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 
+
 /**
  * 编码此类1句话：细心再细心，出了问题debug真的不好调试
  */
@@ -96,7 +97,7 @@ public class ARouterProcessor extends AbstractProcessor {
             packageNameForAPT = options.get(Constants.APT_PACKAGE);
             // 有坑：Diagnostic.Kind.ERROR，异常会自动结束，不像安卓中Log.e
             messager.printMessage(Diagnostic.Kind.NOTE, "moduleName >>> " + moduleName);
-            messager.printMessage(Diagnostic.Kind.NOTE, "packageNameForAPT >>> " + packageNameForAPT);
+            messager.printMessage(Diagnostic.Kind.NOTE, "packageName >>> " + packageNameForAPT);
         }
 
         // 必传参数判空（乱码问题：添加java控制台输出中文乱码）
@@ -139,9 +140,11 @@ public class ARouterProcessor extends AbstractProcessor {
     private void parseElements(Set<? extends Element> elements) throws IOException {
         // 通过Element工具类，获取Activity、Callback类型
         TypeElement activityType = elementUtils.getTypeElement(Constants.ACTIVITY);
+        TypeElement callType = elementUtils.getTypeElement(Constants.CALL);
 
         // 显示类信息（获取被注解节点，类节点）这里也叫自描述 Mirror
         TypeMirror activityMirror = activityType.asType();
+        TypeMirror callMirror = callType.asType();
 
         // 遍历节点
         for (Element element : elements) {
@@ -163,6 +166,8 @@ public class ARouterProcessor extends AbstractProcessor {
             // 类型工具类方法isSubtype，相当于instance一样
             if (typeUtils.isSubtype(elementMirror, activityMirror)) {
                 bean.setType(RouterBean.Type.ACTIVITY);
+            } else if (typeUtils.isSubtype(elementMirror, callMirror)) {
+                bean.setType(RouterBean.Type.CALL);
             } else {
                 // 不匹配抛出异常，这里谨慎使用！考虑维护问题
                 throw new RuntimeException("@ARouter注解目前仅限用于Activity类之上");
@@ -260,11 +265,6 @@ public class ARouterProcessor extends AbstractProcessor {
     }
 
     /**
-     *
-     * public interface ARouterLoadGroup {
-     *
-     *     HashMap<String,Class<? extends ARouterLoadPath>> loadGroup();
-     * }
      * 生成路由组Group文件，如：ARouter$$Group$$app
      *
      * @param groupLoadType ARouterLoadGroup接口信息
